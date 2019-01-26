@@ -3,15 +3,22 @@ Generic version of APA102 (Dotstar) LED class
 
 This class implements both the Adafruit DotStar API and the MicroPython ESP8266 APA102 API.
 Its derived from the Adafruit DotStar CircuitPython class and back ported to MicroPython.
+The focus of this implementation is backward compatibility, performance was a secondary goal.
+If GPIO pins are specified for clock and data the older lower performance "bit banging" technique
+is used rather than the newer higher performance software SPI technique. This preserved the existing API
+that required clock and data pins instead of an SPI object.
 
-Both SPI and GPIO pins are supported.
 
-DotStar
+DotStar (default mode)
 
 color can be one of three things:
+
                 a (r,g,b) list/tuple
+                
                 a (r,g,b, brightness) list/tuple
+                
                 a single, longer int that contains RGB values, like 0xFFFFFF
+                
             brightness, if specified should be a float 0-1
             
 Properties:
@@ -29,7 +36,9 @@ Methods:
   deinit()
   
   Set/Get list element values:
-    Set values are colors as described above. 
+  
+    Set values are colors as described above.
+    
     Get values are returned as (r,g,b) tuples.
     
     
