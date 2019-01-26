@@ -7,6 +7,7 @@ Its derived from the Adafruit DotStar CircuitPython class and back ported to Mic
 Both SPI and GPIO pins are supported.
 
 DotStar
+
 color can be one of three things:
                 a (r,g,b) list/tuple
                 a (r,g,b, brightness) list/tuple
@@ -15,17 +16,25 @@ color can be one of three things:
             
 Properties:
   brightness: float 0.0-1.0
+  
 Methods:
-  init(clock, data, nUmber_of_pixels, *, brightness=1.0, auto_write=True,
+
+  init(clock, data, number_of_pixels, *, brightness=1.0, auto_write=True,
                  pixel_order=BGR, baudrate=1000000, spi_bus=1, apa102_cmp=False)
+                 
   fill(color)
+  
   show()
+  
   deinit()
+  
   Set/Get list element values:
-    Set values are colors as described above
-    Get values are returned as (r,g,b) tuples
+    Set values are colors as described above. 
+    Get values are returned as (r,g,b) tuples.
+    
     
  APA102 ( ESP8266 compatibility mode, same as above except as noted )
-  Set/Get list element values:
-    Get values are returned as (r,g,b,brightness) tuples 
+  Get list element values:
+    Get values are returned as (r,g,b,brightness) tuples
+  write()
   
