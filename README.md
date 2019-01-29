@@ -13,14 +13,17 @@ This implementation has only been tested on the ESP32 and MicroPython 1.9.4
 Two example/test files are included. The examples show simple class usage and some variations on the Adafruit DotStar examples that are more compact.
 
 The three APIs supported are:
+
 Adafruit DotStar:
   * Only SPI clock and data pins are required
   * Brightness values are specified as a float between 0.0 and 1.0
   * Color values returned consist of R, G, B tuples
+  
 Micropython ESP8266 APA102:
   * Only SPI clock and data pins are required
   * Brightness values are specified as an int between 0 and 31
   * Color values returned consist of R, G, B, Brightness tuples
+  
 MicroPython DotStar:
   * An SPI object is required
   * Brightness values are specified as a float between 0.0 and 1.0
@@ -30,13 +33,13 @@ MicroPython DotStar:
 
 color can be one of three things:
 
-  a (r,g,b) list/tuple
+ a (r,g,b) list/tuple
+ 
+ a (r,g,b, brightness) list/tuple
                 
-  a (r,g,b, brightness) list/tuple
+ a single, longer int that contains RGB values, like 0xFFFFFF
                 
-  a single, longer int that contains RGB values, like 0xFFFFFF
-                
-  brightness, if specified should be a float 0-1
+ brightness, if specified should be a float 0-1
             
 Properties:
   brightness: float 0.0-1.0
