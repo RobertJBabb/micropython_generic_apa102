@@ -43,8 +43,8 @@ Properties:
   
 Methods:
 
-  init(clock, data, number_of_pixels, *, brightness=1.0, auto_write=True,
-                 pixel_order=BGR, baudrate=1000000, spi_bus=1, apa102_cmp=False)
+  DotStar(clock, data, number_of_pixels, brightness=1.0, auto_write=True,
+                 pixel_order=BGR, baudrate=1000000)
                  
   fill(color)
   
@@ -61,6 +61,8 @@ Methods:
     
  **MicroPython APA102** ( ESP8266 compatibility mode, same as above except as noted )
   
+  APA102(clock_pin, data_pin, n)
+  
   List element values:
     
   Get values are returned as (r,g,b,brightness) tuples
@@ -71,4 +73,7 @@ Methods:
   **Micropython SPI DotStar**
   
   Same as Adafruit DotStar, but requires an SPI object instead of clock and data Pin objects
+  
+  DotStar(spi, num_pixels)
+  
   
