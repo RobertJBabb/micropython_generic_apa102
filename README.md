@@ -32,13 +32,10 @@ MicroPython DotStar:
 **Adafruit DotStar** (default mode)
 
 color can be one of three things:
-
  a (r,g,b) list/tuple
- 
  a (r,g,b, brightness) list/tuple
-                
  a single, longer int that contains RGB values, like 0xFFFFFF
-                
+ 
  brightness, if specified should be a float 0-1
             
 Properties:
@@ -55,7 +52,7 @@ Methods:
   
   deinit()
   
-  Set/Get list element values:
+  List element values:
   
    Set values are colors as described above.
     
@@ -63,11 +60,15 @@ Methods:
     
     
  **MicroPython APA102** ( ESP8266 compatibility mode, same as above except as noted )
-  Get list element values:
-    Get values are returned as (r,g,b,brightness) tuples
+  
+  List element values:
+    
+  Get values are returned as (r,g,b,brightness) tuples
+    
   write()
+    Same as Show(), writes values to LEDs
   
   **Micropython SPI DotStar**
   
-  Same as Adafruit DotStar, but requires and SPI object instead of clock and data Pin objects
+  Same as Adafruit DotStar, but requires an SPI object instead of clock and data Pin objects
   
