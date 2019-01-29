@@ -1,4 +1,7 @@
 # test generic_dotstar
+# This test file is derived from one of Adafruit's DotStar demo files
+# I updated the code to be more compact and test a few additional slicing variations - Robert Babb
+
 import time
 import generic_dotstar
 import machine
@@ -116,4 +119,3 @@ while True:
     except KeyboardInterrupt:
         pixels.deinit()
         raise
-

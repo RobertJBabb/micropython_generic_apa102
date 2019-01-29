@@ -75,11 +75,15 @@ class DotStar:
     """
 
     def __init__(self, clock, data, n, *, brightness=1.0, auto_write=True,
-                 pixel_order=BGR, baudrate=1000000, spi_bus=1, apa102_cmp=False):
+                 pixel_order=BGR, baudrate=1000000, spi_bus=1, apa102_cmp=False, spip=None):
+
         self._spi = None
         try:
-            self._spi = SPI(spi_bus)
-            self._spi.init(sck=clock, mosi=data, baudrate=baudrate)
+            if spip:
+                self._spi = spip
+            else:
+                self._spi = SPI(spi_bus)
+                self._spi.init(sck=clock, mosi=data, baudrate=baudrate)
         except (NotImplementedError, ValueError):
             if self._spi:
                 self._spi.deinit()
@@ -310,3 +314,14 @@ class DotStar:
     # Added for compatibility with esp8266 apa102
     def write(self):
         self.show()
+
+
+class Apa102DotStar(DotStar):
+    def __init__(self, clock, data, n, *, brightness=1.0, pixel_order=BGR, baudrate=1000000):
+        super().__init__(clock, data, n,  brightness=brightness, pixel_order=pixel_order,
+                         baudrate=baudrate, apa102_cmp=True)
+
+
+class SpiDotStar(DotStar):
+    def __init__(self, spix, n, *, brightness=1.0, auto_write=True, pixel_order=BGR):
+        super().__init__(None, None, n, brightness=brightness, auto_write=auto_write, pixel_order=pixel_order, spip=spix)
